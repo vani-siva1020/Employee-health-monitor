@@ -1,1 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
 
+metadata:
+  name: employee-health-monitor
+
+spec:
+  replicas: 1
+
+  selector:
+    matchLabels:
+      app: employee-health-monitor
+
+  template:
+    metadata:
+      labels:
+        app: employee-health-monitor
+
+    spec:
+      containers:
+      - name: employee-health-monitor
+        image: employee-health-monitor:latest
+
+        ports:
+        - containerPort: 8080
